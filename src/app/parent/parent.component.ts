@@ -13,4 +13,10 @@ export class ParentComponent {
 
   messageParent:string="Va faire les course";
   argentParent : number = 200;
+  resultat:number = 0;
+
+  multiplier(montant:number) {
+    this.resultat = montant*2;
+  }
+  
 }

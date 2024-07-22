@@ -3,4 +3,6 @@
 
 
 
-<app-enfant2 [argentdePoche] = "argentParent"></app-enfant2>
+<app-enfant2 [argentdePoche] = "argentParent"  (numberEnfant)="multiplier($event)"  ></app-enfant2>
+
+<hr>Multipler Parent : {{resultat}}
