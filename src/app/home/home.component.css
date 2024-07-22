@@ -1,0 +1,10 @@
+
+.hero{
+    background: linear-gradient(to right, #000 0%, #707070 100%);
+}
+
+.titre {
+    font-size: 48px;
+    font-family: "Josefin Sans", sans-serif;
+    line-height: 55px;
+}

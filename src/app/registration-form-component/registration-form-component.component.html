@@ -1,0 +1,24 @@
+<h2 class="text-center mt-5">Formulaire d'inscription</h2>
+<div class="container d-flex justify-content-center">
+   
+    <form class="w-50 ">
+        <div class="mb-3 ">
+          <label for="exampleInputNom" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="exampleInputNom" aria-describedby="emailHelp" name="nom"  required>
+       
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPrenom" class="form-label">Prenom</label>
+          <input type="text" class="form-control" id="exampleInputPrenom" name="prenom"  required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail" name="email" >
+          </div>
+      
+          <div class="alert alert-success" role="alert" *ngIf="isVisible">
+            Vous êtes inscrit(e)
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="valider()">Valider</button>
+      </form>
+</div>

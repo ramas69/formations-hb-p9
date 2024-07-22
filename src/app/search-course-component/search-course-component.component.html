@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="container">
+        <div class="row m-3">
+          <div class="col-md-3 my-3">
+            <label for="domaine-select" class="form-label">Filtrer par domaine:</label>
+            <select id="domaine-select" class="form-select" (change)="handleChange($event)">
+              <option value="">Tous les domaines</option>
+              <option value="infra">Infrastructure</option>
+              <option value="design">Design</option>
+
+              <option value="dev">Développement</option>
+            </select>
+          </div>
+        </div>
+
+    <div class="row m-3">
+      <div class="col-md-3 my-3" *ngFor="let formation of filteredFormations; let i = index">
+        <div class="card" style="width: 18rem;" [ngSwitch]="formation.domaine">
+          <div *ngSwitchCase="'infra'" class="card-body bg-primary text-white">
+            <h5 class="card-title">{{formation.titre}}</h5>
+            <p class="card-text">Domaine: Infrastructure</p>
+          </div>
+          <div *ngSwitchCase="'design'" class="card-body bg-warning">
+            <h5 class="card-title">{{formation.titre}}</h5>
+            <p class="card-text">Domaine: Design</p>
+          </div>
+          <div *ngSwitchCase="'dev'" class="card-body bg-success text-white">
+            <h5 class="card-title">{{formation.titre}}</h5>
+            <p class="card-text">Domaine: Développement</p>
+          </div>
+          <div *ngSwitchDefault class="card-body bg-secondary text-white">
+            <h5 class="card-title">{{formation.titre}}</h5>
+            <p class="card-text">Domaine: {{formation.domaine}}</p>
+          </div>
+          <img [src]="formation.image" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">{{formation.stackTechnique}}</p>
+            <p>{{ formation.dates }}</p>
+            <p>{{ formation.tarif }} €</p>
+            <p *ngIf="formation.nombreDePlaces >= 15">Formation complète</p>
+            <p *ngIf="formation.nombreDePlaces < 15">Places: {{ formation.nombreDePlaces }}</p>
+            <a href="/formulaire" class="btn btn-primary m-1">S'inscrire</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i">
+              Centre
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ville</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    {{formation.ville}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
