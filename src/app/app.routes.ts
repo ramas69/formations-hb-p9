@@ -5,12 +5,17 @@ import { SearchCourseComponentComponent } from './search-course-component/search
 import { RegistrationFormComponentComponent } from './registration-form-component/registration-form-component.component';
 import { ParentComponent } from './parent/parent.component';
 import { BlogComponent } from './blog/blog.component';
+import { FormationDetailComponent } from './formation-detail/formation-detail.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 
 export const routes: Routes = [
     {path:"", component:HomeComponent},
     {path:"formations", component:CourseListComponentComponent},
+
     {path:"filtre", component:SearchCourseComponentComponent},
     {path:"formulaire", component:RegistrationFormComponentComponent},
     {path:"parent", component:ParentComponent},
-    {path:"blog", component:BlogComponent}
+    {path:"blog", component:BlogComponent},
+    {path:"blog/:id", component:BlogDetailComponent},
+
 ];

@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IBlog, IUser } from '../../shared/entities';
 import { BlogService } from '../../shared/blog.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })

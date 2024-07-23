@@ -19,5 +19,9 @@ export class BlogService {
     return this.http.get<IUser[]>(`${this.url}/users`);
   }
 
+  fetchOne(id:any){
+    return this.http.get<IBlog>(`${this.url}/posts/${id}`);
+  }
+
 
 }
