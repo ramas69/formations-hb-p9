@@ -29,8 +29,30 @@ Methode 1: avec FormsModule et NGModel
 </form> -->
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p> message : {{ form.controls['name'].errors | json}}</p>
     <input type="text"  formControlName="name" placeholder=" name">
+    @if (form.controls['name'].invalid && form.controls['name'].touched || form.controls['name'].dirty) {
+        @if ( form.controls['name'].errors?.['minlength']) {
+            <div class="alert alert-danger"> trop court</div>
+        }
+        @if ( form.controls['name'].errors?.['maxlength']) {
+            <div class="alert alert-danger"> trop long</div>
+        }
+        @if ( form.controls['name'].errors?.['interdit']) {
+            <div class="alert alert-danger"> Ce mot ne peut etre utilisé</div>
+        }
+
+    }
+   
+    <p> message : {{ form.controls['email'].errors | json}}</p>
     <input type="email"  formControlName="email" placeholder=" email">
+    @if (form.controls['email'].invalid && form.controls['email'].touched || form.controls['email'].dirty) {
+        @if ( form.controls['email'].errors?.['email']) {
+            <div class="alert alert-danger"> mauvais format email</div>
+        }
+      
+
+    }
     <button> Valider</button>
 
 </form>
