@@ -50,6 +50,14 @@ Methode 1: avec FormsModule et NGModel
         @if ( form.controls['email'].errors?.['email']) {
             <div class="alert alert-danger"> mauvais format email</div>
         }
+    }
+
+    <p> mot de passe : {{ form.controls['password'].errors | json}}</p>
+    <input type="password"  formControlName="password" placeholder=" password">
+    @if (form.controls['password'].invalid && form.controls['password'].touched || form.controls['password'].dirty) {
+        @if ( form.controls['password'].errors?.['mdpi']) {
+            <div class="alert alert-danger"> Le formt de mot de passe est incorrect</div>
+        }
       
 
     }

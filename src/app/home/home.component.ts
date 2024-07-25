@@ -8,6 +8,11 @@ export const motsInterdits = (control:AbstractControl): ValidationErrors | null=
    return mots.includes(control.value) ? {interdit:"Ce mot est interdit"}:null
 }
 
+export  const motdepasse = (control:AbstractControl): ValidationErrors | null=> {
+  const conditions = RegExp('^(?=.*[A-Zd!@#$%^&*])(?=.*[a-z]).{8,}$');
+  return conditions.test(control.value) ? {mdp:"Ce mot est interdit"}: {mdpi:"Ce mot est regex"}
+}
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -28,7 +33,7 @@ export class HomeComponent {
     public form:FormGroup = new FormGroup({
       name: new FormControl('', {validators:[Validators.required, Validators.minLength(4), Validators.maxLength(10), motsInterdits]}),
       email: new FormControl('', {validators:[Validators.email, motsInterdits]}),
-
+      password: new FormControl('', {validators:[Validators.required,motdepasse]})
     })
 
     onSubmit(){
