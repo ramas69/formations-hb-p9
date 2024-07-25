@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="hero ">
     <div class="row">
         <div class="col-md-8">
@@ -18,5 +18,19 @@
     </div>
    
 
-</div>
+</div> -->
+<!-- 
+Methode 1: avec FormsModule et NGModel
 
+<form #loginForm ='ngForm' (ngSubmit)="onSubmit(loginForm)" >
+    <input type="text" name="username" [(ngModel)]="username" required  placeholder="Username">
+    <input type="password" name="password" [(ngModel)]="password" required minlength="4" placeholder="password">
+    <button  [disabled]="!loginForm.valid">Se connecter</button>
+</form> -->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text"  formControlName="name" placeholder=" name">
+    <input type="email"  formControlName="email" placeholder=" email">
+    <button> Valider</button>
+
+</form>
