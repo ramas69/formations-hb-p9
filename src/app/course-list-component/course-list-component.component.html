@@ -1,19 +1,24 @@
 <div class="container">
+  <p> {{ "1234 5666 7777 7456" | cb}}</p>
     <div class="row m-3">
         <div class="col-md-3 my-3" *ngFor ="let formation of formations">
             <div class="card" style="width: 18rem;">
                 <img [src]="formation.image" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{formation.titre}}</h5>
+          <h5 class="card-title">{{formation.titre | slice:0:5 | uppercase}}</h5>
                   <p class="card-text">{{formation.stackTechnique}}</p>
-                  <p class="card-text">{{formation.domaine}}</p>
-                  <span>{{ formation.dates}}</span>
-                  <span>{{ formation.tarif}}</span>
-                  <span>{{ formation.nombreDePlaces}}</span>
+                  <p class="card-text">{{formation.domaine | uppercase}}</p>
+                  <p class="card-text"> {{ formation.tarif }}</p>
+                  <p class="card-text"> {{ formation.tarif | toDollars |number:"1.0-2" }}</p>
+                  <span> {{ dateDuJour |date :"d MMMM Y"}}</span>
                   <a href="/formulaire" class="btn btn-primary">S'inscrire</a>
                 </div>
               </div>
         </div>
     </div>
+
+
+    <p> Montant HT: {{ 1000}}</p>
+    <p> Montant TTC : </p>
     
 </div>

@@ -9,7 +9,7 @@ export const motsInterdits = (control:AbstractControl): ValidationErrors | null=
 }
 
 export  const motdepasse = (control:AbstractControl): ValidationErrors | null=> {
-  const conditions = RegExp('^(?=.*[A-Zd!@#$%^&*])(?=.*[a-z]).{8,}$');
+  const conditions = RegExp('^(?=.*[A-Zd!@#$%^&*/])(?=.*[a-z]).{8,}$');
   return conditions.test(control.value) ? {mdp:"Ce mot est interdit"}: {mdpi:"Ce mot est regex"}
 }
 
@@ -33,7 +33,7 @@ export class HomeComponent {
     public form:FormGroup = new FormGroup({
       name: new FormControl('', {validators:[Validators.required, Validators.minLength(4), Validators.maxLength(10), motsInterdits]}),
       email: new FormControl('', {validators:[Validators.email, motsInterdits]}),
-      password: new FormControl('', {validators:[Validators.required,motdepasse]})
+      password: new FormControl('', {validators:[motdepasse, Validators.required, Validators.minLength(4), Validators.maxLength(10)]})
     })
 
     onSubmit(){
