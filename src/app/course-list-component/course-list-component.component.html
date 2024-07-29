@@ -1,5 +1,13 @@
 <div class="container">
   <p> {{ "1234 5666 7777 7456" | cb}}</p>
+  <input type="text" [(ngModel)] = "search" name="search">
+  <ul>
+    <li *ngFor="let nom of noms | search:search">
+      {{nom }}
+    </li>
+  </ul>
+
+
     <div class="row m-3">
         <div class="col-md-3 my-3" *ngFor ="let formation of formations">
             <div class="card" style="width: 18rem;">

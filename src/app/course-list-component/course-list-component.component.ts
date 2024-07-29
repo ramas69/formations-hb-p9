@@ -4,11 +4,13 @@ import { IFormation } from '../../shared/entities';
 import { CommonModule } from '@angular/common';
 import { ToDollarsPipe } from '../../shared/to-dollars.pipe';
 import { CbPipe } from '../../shared/cb.pipe';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from '../../shared/search.pipe';
 
 @Component({
   selector: 'app-course-list-component',
   standalone: true,
-  imports: [CommonModule, ToDollarsPipe, CbPipe],
+  imports: [CommonModule, ToDollarsPipe, CbPipe, FormsModule, SearchPipe],
   templateUrl: './course-list-component.component.html',
   styleUrl: './course-list-component.component.css'
 })
@@ -16,6 +18,8 @@ export class CourseListComponentComponent implements OnInit {
 
 formations:IFormation []= [];
 dateDuJour :Date = new Date;
+noms:string[] = ['Jean', 'Marie', 'lala'];
+search:string ="";
 
   constructor( private service: FormationService){}
 
