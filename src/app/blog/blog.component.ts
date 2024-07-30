@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { IBlog, IUser } from '../../shared/entities';
 import { BlogService } from '../../shared/blog.service';
 import { RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-blog',
@@ -10,24 +11,23 @@ import { RouterLink } from '@angular/router';
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent implements OnInit, OnDestroy {
 
   articles:IBlog[]=[];
   users:IUser[]= []
   service= inject(BlogService)
+  dataBlog!:Subscription;
 
   ngOnInit():void{
     this.getBlog();
     this.getUsers();
-  
   }
 
   getBlog(){
-    this.service.fetchAll().subscribe(data => {
+   this.dataBlog =  this.service.fetchAll().subscribe(data => {
       this.articles = data;
     })
   }
-
   getUsers(){
     this.service.fetchUsers().subscribe(
       data => this.users = data,
@@ -38,6 +38,10 @@ export class BlogComponent implements OnInit {
   getUserName( userId:number){
     const user = this.users.find( username => username.id === userId);
     return user ? user.name : 'Pas de User trouvé' ;
+  }
+
+  ngOnDestroy(): void { 
+    this.dataBlog.unsubscribe();
   }
 
 

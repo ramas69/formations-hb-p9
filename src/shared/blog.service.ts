@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IBlog, IUser } from './entities';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
 
-  url = "https://jsonplaceholder.typicode.com"
+  url = environment.apiURL
 
   constructor( private http: HttpClient) { }
 

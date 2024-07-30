@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe } from '@angular/core';
+import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
 import { FormationService } from '../../shared/formation.service';
 import { IFormation } from '../../shared/entities';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { SearchPipe } from '../../shared/search.pipe';
   templateUrl: './course-list-component.component.html',
   styleUrl: './course-list-component.component.css'
 })
-export class CourseListComponentComponent implements OnInit {
+export class CourseListComponentComponent implements OnInit, OnDestroy {
 
 formations:IFormation []= [];
 dateDuJour :Date = new Date;
@@ -25,6 +25,10 @@ search:string ="";
 
   ngOnInit(): void {
       this.formations = this.service.fetchAll();
+  }
+
+  ngOnDestroy(): void {
+      
   }
 
 }
